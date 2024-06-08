@@ -1,0 +1,10 @@
+.skill {
+  width: 30px;
+  max-height: 30px;
+  data-toggle: "tooltip";
+  data-placement: "top";
+}
+
+.test {
+  color: blue;
+}

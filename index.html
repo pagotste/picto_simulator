@@ -1,3 +1,44 @@
-<body>
-    coucou
-</body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body style="background-color:powderblue; position:relative">
+    <img class="title" src="/static/img/title.png" onclick="resizeImage(this)">
+    <div id="gauges">
+      <label for="paletteMeter">Palette Gauge</label>
+      <meter id="paletteMeter" value="0" min="0" max="100"></meter>
+      <label id="paletteValue" value="0">0</label>
+      
+    </div>
+    <div id="arena">
+      <span>
+        <img id="player" style="width:20%; height:20%; position:absolute" src="/static/img/player.png">
+        <img id="dummmy" style="width:30%; height:30%; margin-left:30%" src="/static/img/dummy.png">
+      </span>
+      <a href="./test.html">the test page</a>
+    </div>
+    erzerzr
+    <p class="test">Wesh</p>
+
+    <div class="actions">
+        <div class = "action" data-skillname="fire" title="">
+            <img class="skill" src="static/img/icons/FireInRed.png">
+        </div>
+        <button class="skillButton" onclick="MyMove()">ratio</button>
+    </div>
+  </body>
+  <script src="./js/functions.js"></script> 
+  <script src="./js/skill_data.js"></script>
+<script src="./js/sim.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<footer>
+  <a href="https://github.com/pagotste/picto_simulator">Link to Github repo</a>
+</footer>
+</html>
