@@ -2,10 +2,10 @@
   "name": "pictosim",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build index.html"
+    "build": "cp -r ./static ./dist && parcel build index.html",
+    "run": "npx parcel index.html"
   },
   "devDependencies": {
     "parcel": "^2.12.0",
@@ -15,12 +15,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "@parcel/config-default": "^2.12.0"
-  },
-  "staticFiles": {
-    "staticPath": [
-      "static",
-      "dist"
-    ]
+    "@parcel/config-default": "^2.12.0",
+    "jquery": "^3.7.1"
   }
 }

@@ -1,29 +1,107 @@
 //inits
 var elements = document.getElementsByClassName("action");
+
+const defaultSlots = {
+  0: {
+    skillname: "FireInRed",
+  },
+  1: {
+    skillname: "FireIIInRed",
+  },
+  2: {
+    skillname: "SubtractivePalette",
+  },
+  3: {
+    skillname: "LivingMuse",
+  },
+};
+
+var myPlayer = new Player();
+
 function initData() {
+  console.log("lmao");
+  myPlayer = new Player();
   for (var i = 0; i < elements.length; i++) {
     elements[i].setAttribute(
       "title",
-      skills[elements[i].dataset.skillname].tooltip,
+      skills[defaultSlots[i].skillname].tooltip,
     );
+    elements[i].setAttribute("data-skillname", defaultSlots[i].skillname);
+    elements[i].getElementsByTagName("img")[0].src =
+      skills[defaultSlots[i].skillname].imgLocation;
   }
+
+  document.getElementById("paletteMeter").value = 0;
+  document.getElementById("paletteValue").value = 0;
 }
 
 initData();
 
+//gaming
+
+function changeState(skillname) {
+  if (myPlayer.palette + skills[skillname].gaugeValue < 0) {
+    return;
+  }
+
+  if (myPlayer.palette < 100) {
+    myPlayer.palette += skills[skillname].gaugeValue;
+  }
+
+  if (skills[skillname].paint != null && myPlayer.colors.length < 5) {
+    var paint = skills[skillname].paint;
+    if (paint == "black") {
+      myPlayer.colors.pop();
+    }
+    myPlayer.colors.push(paint);
+  }
+
+  MyMove();
+  console.log(myPlayer);
+}
+
 var cast = function () {
-  var combo = skills[this.dataset.skillname].comboAction;
+  var currentSkill = this.dataset.skillname;
+
+  //update the game state
+  changeState(currentSkill);
+
+  //manage combo
+  var combo = skills[currentSkill].comboAction;
+
   if (combo != null) {
     this.setAttribute("data-skillname", combo);
+    refreshData(this);
   }
-  refreshData(this);
+  //combo highlight
+  var comboGlow = skills[currentSkill].comboHighlight;
+  if (comboGlow) {
+    this.setAttribute("data-skillname", combo); //todo: changer le glow..
+  }
+
+  //cooldown
+  manageCooldown(this, currentSkill);
 };
+
+function manageCooldown(htmlElement, skill) {
+  var cd = skills[skill].recastPC;
+  console.log(htmlElement);
+
+  var cooldownTimer = setInterval(function function1() {
+    htmlElement.querySelector(".cd").innerHTML = cd;
+
+    cd -= 1;
+    if (cd <= 0) {
+      clearInterval(cooldownTimer);
+      htmlElement.querySelector(".cd").innerHTML = "";
+    }
+  }, 1000);
+}
 
 function refreshData(skill) {
   skill.setAttribute("title", skills[skill.dataset.skillname].tooltip);
   skill.getElementsByTagName("img")[0].src =
     skills[skill.dataset.skillname].imgLocation;
-  console.log("cringe");
 }
 
 //listener
@@ -31,7 +109,7 @@ for (var i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", cast, false);
 }
 
-var keyCodes = {
+/*var keyCodes = {
   3: "",
   8: "",
   9: "TAB",
@@ -189,3 +267,4 @@ var keyCodes = {
   234: "",
   255: "",
 };
+*/

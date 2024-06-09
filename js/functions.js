@@ -1,42 +1,27 @@
-var script = document.createElement("script");
-script.src = "https://code.jquery.com/jquery-3.6.3.min.js"; // Check https://jquery.com/ for the current version
-document.getElementsByTagName("head")[0].appendChild(script);
-
-function resizeImage(img) {
-  if ((img.style.width = "500px")) {
-    console.log("ok");
-    img.style.width = "800px";
-    img.style.height = "400px";
-  } else {
-    console.log("zer ok");
-    img.style.width = "500px";
-    img.style.height = "500px";
-  }
-}
-
+// Test function to move the player on skill(button) click
 function MyMove() {
   let id = null;
   const elem = document.getElementById("player");
   const palette = document.getElementById("paletteMeter");
   const palettevalue = document.getElementById("paletteValue");
-  document.getElementsByClassName("skillButton").disabled = true;
-  document.getElementsByClassName("skillButton").innerHTML = "true";
+  $(".skillButton").prop("disabled", true);
+  // Disable the buttons for x seconds
   setTimeout(function () {
-    document.getElementsByClassName("skillButton").disabled = false;
-  }, 5000);
+    $(".skillButton").prop("disabled", false);
+  }, 1000);
   let pos = 0;
   clearInterval(id);
   id = setInterval(frame, 1);
+
+  // move the player img until it reaches 200px
   function frame() {
     if (pos > 200) {
       elem.style.left = pos - 200 + "px";
-      if (palette.value < 100) {
-        palette.value = palette.value + 25;
-        palettevalue.innerHTML = palette.value;
-      } else {
-        palette.value = 0;
-        palettevalue.innerHTML = "0";
-      }
+      // Increases the palette gauge until it reaches 100
+
+      palette.value = myPlayer.palette;
+      palettevalue.innerHTML = myPlayer.palette;
+
       console.log("gcd end");
       clearInterval(id);
     } else {
@@ -45,3 +30,8 @@ function MyMove() {
     }
   }
 }
+
+// jquery check
+$(document).ready(function () {
+  console.log("Hello Jquery loaded in js file");
+});

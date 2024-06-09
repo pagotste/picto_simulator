@@ -21,11 +21,15 @@
 <div id ="container">
   <div id ="animate"></div>
 </div>
+<div>
+  <p id="timerz">30<p>
+</div>
 
 <script>
 function myMove() {
   let id = null;
-  const elem = document.getElementById("animate");   
+  const elem = document.getElementById("animate");  
+  const timerz = document.getElementById("timerz");    
   let pos = 0;
   clearInterval(id);
   id = setInterval(frame, 5);
@@ -34,6 +38,7 @@ function myMove() {
       clearInterval(id);
     } else {
       pos++; 
+      console.log(timerz.innerText);
       elem.style.top = pos + "px"; 
       elem.style.left = pos + "px"; 
     }

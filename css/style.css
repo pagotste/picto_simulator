@@ -1,10 +1,52 @@
 .skill {
   width: 30px;
-  max-height: 30px;
-  data-toggle: "tooltip";
-  data-placement: "top";
+  height: 30px;
+  margin: 4px;
+  float: left;
+  position: relative;
+}
+
+.comboSkill {
+  box-shadow: 0px 0px 4px yellow;
+}
+
+.action {
+  float: left;
+  display: block;
+}
+
+.row {
+  display: flex;
 }
 
 .test {
   color: blue;
+}
+
+.cd {
+  position: relative;
+  left: 3%;
+  transform: translate(25%, -70%);
+  text-shadow:
+    0 0 5px black,
+    0 0 5px black;
+  font-weight: bold;
+  color: aliceblue;
+}
+
+.recast {
+  display: block;
+  position: absolute;
+  left: 3%;
+  transform: translate(-50%, -35%);
+  text-shadow:
+    0 0 5px black,
+    0 0 5px black;
+  font-weight: bold;
+  color: aliceblue;
+}
+
+body {
+  background-color: powderblue;
+  position: relative;
 }
