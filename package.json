@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "cp -r ./static ./dist && parcel build index.html",
+    "build": "cp -r ./static/img ./dist && parcel build index.html",
     "run": "npx parcel index.html"
   },
   "devDependencies": {

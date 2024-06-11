@@ -61,6 +61,7 @@ function changeState(skillname) {
 }
 
 var cast = function () {
+  if (this.disabled) return;
   var currentSkill = this.dataset.skillname;
 
   //update the game state
@@ -85,15 +86,16 @@ var cast = function () {
 
 function manageCooldown(htmlElement, skill) {
   var cd = skills[skill].recastPC;
-  console.log(htmlElement);
+  htmlElement.querySelector(".cd").innerHTML = cd;
+  $(htmlElement).prop("disabled", true);
 
   var cooldownTimer = setInterval(function function1() {
-    htmlElement.querySelector(".cd").innerHTML = cd;
-
     cd -= 1;
+    htmlElement.querySelector(".cd").innerHTML = cd;
     if (cd <= 0) {
       clearInterval(cooldownTimer);
       htmlElement.querySelector(".cd").innerHTML = "";
+      $(htmlElement).prop("disabled", false);
     }
   }, 1000);
 }
